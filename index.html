@@ -10,16 +10,16 @@
     <style>
         :root {
             --bg-dark: #050507;
-            --bg-card: #0e0e12;
-            --bg-card-elevated: #15151b;
-            --gold-light: #f3dfb9;
+            --bg-card: #0e0e13;
+            --bg-elevated: #15151c;
+            --gold-light: #f5e1ba;
             --gold: #d4af37;
-            --gold-dark: #997a2c;
-            --gold-gradient: linear-gradient(135deg, #f3dfb9 0%, #d4af37 50%, #997a2c 100%);
+            --gold-dark: #997928;
+            --gold-gradient: linear-gradient(135deg, #f5e1ba 0%, #d4af37 50%, #997928 100%);
             --youtube-red: #ff0033;
             --text-main: #f5f5f7;
-            --text-muted: #92929a;
-            --border-gold: rgba(212, 175, 55, 0.28);
+            --text-muted: #92929b;
+            --border-gold: rgba(212, 175, 55, 0.32);
             --border-subtle: rgba(255, 255, 255, 0.08);
         }
         * { box-sizing: border-box; scroll-behavior: smooth; }
@@ -36,7 +36,7 @@
             top: 0;
             width: 100%;
             height: 74px;
-            background: rgba(5, 5, 7, 0.92);
+            background: rgba(5, 5, 7, 0.94);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             padding: 0 7%;
@@ -75,7 +75,7 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.12);
             border: 1px solid var(--border-gold);
             flex-direction: column;
             justify-content: center;
@@ -102,7 +102,7 @@
             align-items: center;
             justify-content: center;
             padding: 120px 7% 70px;
-            background: radial-gradient(circle at 75% 25%, rgba(212, 175, 55, 0.14) 0%, #050507 62%);
+            background: radial-gradient(circle at 75% 25%, rgba(212, 175, 55, 0.15) 0%, #050507 62%);
             gap: 55px;
             flex-wrap: wrap;
         }
@@ -194,8 +194,8 @@
             inset: -8px;
             border-radius: 30px;
             background: var(--gold-gradient);
-            opacity: 0.35;
-            filter: blur(16px);
+            opacity: 0.32;
+            filter: blur(18px);
             z-index: 0;
         }
         .hero-image img {
@@ -247,50 +247,6 @@
         .stat-item h3 { margin: 0; font-size: 1.8rem; color: var(--gold-light); }
         .stat-item span { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* Tipografik Lüks Altın Kapak Kutusu */
-        .typo-cover {
-            width: 185px;
-            height: 185px;
-            border-radius: 20px;
-            flex-shrink: 0;
-            background: radial-gradient(circle at top left, #241e12 0%, #0a0a0d 75%);
-            border: 1.5px solid var(--border-gold);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 16px;
-            box-shadow: 0 18px 40px rgba(0,0,0,0.85);
-            position: relative;
-        }
-        .typo-cover .artist-tag {
-            font-size: 0.65rem;
-            letter-spacing: 4px;
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .typo-cover .song-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.45rem;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: 2px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .typo-cover .year-tag {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            letter-spacing: 3px;
-            margin-top: 10px;
-            border-top: 1px solid var(--border-gold);
-            padding-top: 6px;
-            width: 70%;
-        }
-
         .featured-hit {
             background: linear-gradient(135deg, #161410 0%, #0c0c10 100%);
             border: 1px solid var(--border-gold);
@@ -301,6 +257,22 @@
             align-items: center;
             gap: 32px;
             flex-wrap: wrap;
+        }
+        .hit-cover {
+            width: 190px;
+            height: 190px;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1.5px solid var(--border-gold);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.85);
+            background: #141418;
+        }
+        .hit-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .release-content { flex: 1; min-width: 250px; }
         .release-tag {
@@ -318,6 +290,8 @@
         .release-content h3 { margin: 0 0 8px; font-size: 1.85rem; color: #fff; }
         .release-content p { margin: 0 0 22px; color: var(--text-muted); font-size: 0.92rem; }
         .release-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        /* Görselsiz Premium Altın Yazı Kartları */
         .songs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -326,9 +300,9 @@
         }
         .song-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-gold);
             border-radius: 22px;
-            padding: 22px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -336,34 +310,31 @@
         }
         .song-card:hover {
             transform: translateY(-6px);
-            border-color: var(--gold);
-            background: var(--bg-card-elevated);
+            background: var(--bg-elevated);
+            box-shadow: 0 16px 35px rgba(212, 175, 55, 0.12);
         }
-        .song-art-banner {
-            height: 135px;
+        .premium-typo-box {
+            padding: 26px 16px;
             border-radius: 16px;
-            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.22) 0%, #09090c 80%);
-            border: 1px solid var(--border-gold);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.18) 0%, #08080b 75%);
+            border: 1px solid rgba(212, 175, 55, 0.25);
             text-align: center;
-            padding: 15px;
             margin-bottom: 18px;
         }
-        .song-art-banner span {
-            font-size: 0.62rem;
+        .premium-typo-box .sub {
+            display: block;
+            font-size: 0.65rem;
             letter-spacing: 4px;
             color: var(--gold);
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
-        .song-art-banner h4 {
+        .premium-typo-box h4 {
             font-family: 'Cinzel', serif;
             margin: 0;
-            font-size: 1.4rem;
-            letter-spacing: 2.5px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -382,8 +353,8 @@
             justify-content: center;
             padding: 12px 20px;
             border-radius: 14px;
-            background: rgba(255, 0, 51, 0.14);
-            border: 1px solid rgba(255, 0, 51, 0.45);
+            background: rgba(255, 0, 51, 0.15);
+            border: 1px solid rgba(255, 0, 51, 0.5);
             color: #fff;
             text-decoration: none;
             font-weight: 700;
@@ -394,7 +365,6 @@
             transition: 0.3s;
         }
         .song-card-btn:hover { background: var(--youtube-red); border-color: var(--youtube-red); }
-
         .media-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -415,7 +385,7 @@
         }
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 16px;
         }
         .social-card {
@@ -434,12 +404,13 @@
         .social-card:hover {
             transform: translateY(-4px);
             border-color: var(--gold);
-            background: var(--bg-card-elevated);
+            background: var(--bg-elevated);
         }
         .social-card i.platform-icon { font-size: 1.7rem; color: var(--gold); }
         .social-info h4 { margin: 0; font-size: 0.96rem; }
         .social-info span { font-size: 0.78rem; color: var(--text-muted); }
         .arrow-icon { color: var(--gold); font-size: 0.82rem; }
+
         footer {
             background: #030304;
             border-top: 1px solid var(--border-gold);
@@ -495,7 +466,7 @@
             .hero-buttons { justify-content: center; }
             .about-grid { grid-template-columns: 1fr; padding: 26px; }
             .about-stats { border-left: none; border-top: 1px solid var(--border-gold); padding-left: 0; padding-top: 22px; }
-            .typo-cover { width: 100%; height: 150px; }
+            .hit-cover { width: 100%; height: 240px; }
             .hamburger { display: flex; }
             .nav-links {
                 position: fixed;
@@ -528,8 +499,8 @@
         </button>
         <div class="nav-links" id="navLinks">
             <a href="#hakkinda">Hakkında</a>
-            <a href="#muzik">En Çok Dinlenenler</a>
-            <a href="#klipler">Popüler Klipler</a>
+            <a href="#muzik">En Çok Dinlenen</a>
+            <a href="#klipler">Popüler Şarkılar</a>
             <a href="#sosyal">Resmi Hesaplar</a>
             <a href="#iletisim">Menajerlik</a>
         </div>
@@ -549,17 +520,18 @@
             <img src="reynmen.jpeg" alt="Reynmen - Yusuf Aktaş">
         </div>
     </header>
+
     <section id="hakkinda">
         <h2 class="section-title">Reynmen Hakkında</h2>
         <div class="section-line"></div>
         <div class="about-grid">
             <div>
                 <p><strong>Yusuf Aktaş</strong> ya da sahne adıyla <strong>Reynmen</strong> (d. 6 Aralık 1995, İstanbul), Türk şarkıcı, söz yazarı ve prodüktördür. Dijital dünyada yakaladığı büyük ivmeyi profesyonel müzik kariyerine taşıyarak kısa sürede Türkiye'nin en çok dinlenen sanatçıları arasına girmiştir.</p>
-                <p>2019 yılında yayımladığı ve 367 milyonu aşan izlenmeyle tüm zamanların en çok dinlenen çalışması olan <strong>"Derdim Olsun"</strong> ile global listelerde rekorlar kırmıştır. Ardından <em>"Ela"</em>, <em>"Leila"</em>, <em>"Yana Yana"</em>, <em>RnBesk</em> EP'si ve <em>"Çatma Yarim"</em> gibi milyonlarca kez dinlenen eserleriyle müzik listelerinin zirvesinde yer almaktadır.</p>
+                <p>2019 yılında yayımladığı ve 366 milyonu aşan izlenmeyle tüm zamanların en çok dinlenen çalışması olan <strong>"Derdim Olsun"</strong> ile global listelerde rekorlar kırmıştır. Ardından <em>"Ela"</em>, <em>"Leila"</em>, <em>"Yana Yana"</em>, <em>"Renklensin"</em> ve <em>"Çatma Yarim"</em> gibi milyonlarca kez dinlenen eserleriyle müzik listelerinin zirvesinde yer almaktadır.</p>
             </div>
             <div class="about-stats">
                 <div class="stat-item">
-                    <h3>367M+</h3>
+                    <h3>366M+</h3>
                     <span>Derdim Olsun YouTube İzlenmesi</span>
                 </div>
                 <div class="stat-item">
@@ -579,15 +551,13 @@
         <div class="section-line"></div>
 
         <div class="featured-hit">
-            <div class="typo-cover">
-                <span class="artist-tag">REYNMEN</span>
-                <div class="song-logo">DERDİM<br>OLSUN</div>
-                <span class="year-tag">2019 • SINGLE</span>
+            <div class="hit-cover">
+                <img src="derdim-olsun.jpeg" alt="Reynmen - Derdim Olsun">
             </div>
             <div class="release-content">
                 <span class="release-tag"><i class="fa-solid fa-fire"></i> En Çok Dinlenen Rekor Hit</span>
                 <h3>Derdim Olsun</h3>
-                <p>Reynmen • YouTube'da 367 Milyon+ izlenme ve dijital müzik platformlarında tarihi dinlenme rekoru.</p>
+                <p>Reynmen • YouTube'da 366 Milyon+ izlenme ve dijital müzik platformlarında tarihi dinlenme rekoru.</p>
                 <div class="release-actions">
                     <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="btn-gold">
                         <i class="fa-brands fa-spotify"></i> Spotify'da Dinle
@@ -610,67 +580,66 @@
             </div>
         </div>
     </section>
-
     <section id="klipler">
         <h2 class="section-title">Diğer Popüler YouTube Şarkıları</h2>
         <div class="section-line"></div>
         <div class="songs-grid">
             <div class="song-card">
                 <div>
-                    <div class="song-art-banner">
-                        <span>REYNMEN</span>
-                        <h4>LEİLA</h4>
-                    </div>
-                    <div class="song-meta">
-                        <span>Official Video</span>
-                        <strong>309M+ İzlenme</strong>
-                    </div>
-                </div>
-                <a href="https://www.youtube.com/watch?v=BokbpfhV8O8" target="_blank" rel="noopener noreferrer" class="song-card-btn">
-                    <i class="fa-brands fa-youtube"></i> YouTube'da İzle
-                </a>
-            </div>
-
-            <div class="song-card">
-                <div>
-                    <div class="song-art-banner">
-                        <span>REYNMEN</span>
+                    <div class="premium-typo-box">
+                        <span class="sub">REYNMEN • SINGLE</span>
                         <h4>ELA</h4>
                     </div>
                     <div class="song-meta">
-                        <span>Official Video</span>
-                        <strong>260M+ İzlenme</strong>
+                        <span>Official Music Video</span>
+                        <strong>390M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=ePe8WajQoNc" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="song-card-btn">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
 
             <div class="song-card">
                 <div>
-                    <div class="song-art-banner">
-                        <span>SEMİCENK & REYNMEN</span>
+                    <div class="premium-typo-box">
+                        <span class="sub">REYNMEN • RNBESK</span>
+                        <h4>LEİLA</h4>
+                    </div>
+                    <div class="song-meta">
+                        <span>Official Music Video</span>
+                        <strong>308M+ İzlenme</strong>
+                    </div>
+                </div>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                    <i class="fa-brands fa-youtube"></i> YouTube'da İzle
+                </a>
+            </div>
+
+            <div class="song-card">
+                <div>
+                    <div class="premium-typo-box">
+                        <span class="sub">SEMİCENK & REYNMEN</span>
                         <h4>YANA YANA</h4>
                     </div>
                     <div class="song-meta">
-                        <span>Official Video</span>
-                        <strong>183M+ İzlenme</strong>
+                        <span>Official Music Video</span>
+                        <strong>188M+ Dinlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=Q3cj3lVCxr0" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="song-card-btn">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
 
             <div class="song-card">
                 <div>
-                    <div class="song-art-banner">
-                        <span>REYNMEN</span>
+                    <div class="premium-typo-box">
+                        <span class="sub">REYNMEN • SINGLE</span>
                         <h4>ÇATMA YARİM</h4>
                     </div>
                     <div class="song-meta">
-                        <span>Official Video</span>
+                        <span>Official Backstage Video</span>
                         <strong>137M+ İzlenme</strong>
                     </div>
                 </div>
@@ -680,6 +649,7 @@
             </div>
         </div>
     </section>
+
     <section id="sosyal">
         <h2 class="section-title">Resmi Sosyal Medya</h2>
         <div class="section-line"></div>
@@ -689,12 +659,12 @@
                     <i class="fa-brands fa-instagram platform-icon"></i>
                     <div class="social-info">
                         <h4>Instagram</h4>
-                        <span>@reynmen • 6.2M Takipçi</span>
+                        <span>@reynmen • 6M Takipçi</span>
                     </div>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://open.spotify.com/intl-tr/artist/1Fg19vpUJpAAPFjnKaVYVW" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-spotify platform-icon"></i>
                     <div class="social-info">
@@ -724,22 +694,12 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-card">
-                <div class="social-card-left">
-                    <i class="fa-brands fa-x-twitter platform-icon"></i>
-                    <div class="social-info">
-                        <h4>X (Twitter)</h4>
-                        <span>@imreynmen • Resmi Hesap</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-            </a>
-            <a href="https://apple.com" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://music.apple.com/tr/artist/reynmen/1280541395?l=tr" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-apple platform-icon"></i>
                     <div class="social-info">
                         <h4>Apple Music</h4>
-                        <span>Reynmen • Diskografi</span>
+                        <span>Reynmen • Resmi Diskografi</span>
                     </div>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
