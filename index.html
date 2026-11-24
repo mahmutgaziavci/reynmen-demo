@@ -252,15 +252,15 @@
             border: 1px solid var(--border-gold);
             border-radius: 26px;
             padding: 32px;
-            margin-bottom: 34px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             gap: 32px;
             flex-wrap: wrap;
         }
         .hit-cover {
-            width: 190px;
-            height: 190px;
+            width: 195px;
+            height: 195px;
             border-radius: 20px;
             overflow: hidden;
             flex-shrink: 0;
@@ -291,12 +291,24 @@
         .release-content p { margin: 0 0 22px; color: var(--text-muted); font-size: 0.92rem; }
         .release-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-        /* Görselsiz Premium Altın Yazı Kartları */
+        .video-showcase {
+            background: var(--bg-card);
+            padding: 22px;
+            border-radius: 24px;
+            border: 1px solid var(--border-gold);
+        }
+        .video-showcase h4 {
+            margin: 0 0 14px;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+
         .songs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 22px;
-            margin-bottom: 34px;
         }
         .song-card {
             background: var(--bg-card);
@@ -314,7 +326,7 @@
             box-shadow: 0 16px 35px rgba(212, 175, 55, 0.12);
         }
         .premium-typo-box {
-            padding: 26px 16px;
+            padding: 28px 16px;
             border-radius: 16px;
             background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.18) 0%, #08080b 75%);
             border: 1px solid rgba(212, 175, 55, 0.25);
@@ -365,27 +377,9 @@
             transition: 0.3s;
         }
         .song-card-btn:hover { background: var(--youtube-red); border-color: var(--youtube-red); }
-        .media-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px;
-        }
-        .music-box {
-            background: var(--bg-card);
-            padding: 20px;
-            border-radius: 24px;
-            border: 1px solid var(--border-gold);
-        }
-        .music-box h4 {
-            margin: 0 0 14px;
-            font-size: 0.88rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--gold-light);
-        }
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
             gap: 16px;
         }
         .social-card {
@@ -457,9 +451,6 @@
             font-size: 0.8rem;
             color: var(--text-muted);
         }
-        @media (max-width: 860px) {
-            .media-grid { grid-template-columns: 1fr; }
-        }
         @media (max-width: 768px) {
             .hero { padding-top: 105px; text-align: center; }
             .hero-text h1 { font-size: 3rem; letter-spacing: 5px; }
@@ -512,7 +503,7 @@
             <h1>REYNMEN</h1>
             <p>Modern Türk pop ve R&B müziğine yön veren rekor kıran hitleri, milyonlara ulaşan sahne enerjisi ve özgün tarzıyla Yusuf Aktaş'ın dijital dünyası.</p>
             <div class="hero-buttons">
-                <a href="#muzik" class="btn-gold"><i class="fa-solid fa-play"></i> Hit Parçaları Dinle</a>
+                <a href="#muzik" class="btn-gold"><i class="fa-solid fa-play"></i> Hit Parçaları İzle</a>
                 <a href="#sosyal" class="btn-outline"><i class="fa-solid fa-share-nodes"></i> Resmi Hesaplar</a>
             </div>
         </div>
@@ -535,8 +526,8 @@
                     <span>Derdim Olsun YouTube İzlenmesi</span>
                 </div>
                 <div class="stat-item">
-                    <h3>1.4 Milyar+</h3>
-                    <span>Toplam Dijital Dinlenme</span>
+                    <h3>6.36M+</h3>
+                    <span>Resmi YouTube Abonesi</span>
                 </div>
                 <div class="stat-item">
                     <h3>Houze</h3>
@@ -545,7 +536,6 @@
             </div>
         </div>
     </section>
-
     <section id="muzik">
         <h2 class="section-title">Öne Çıkan Eser</h2>
         <div class="section-line"></div>
@@ -559,27 +549,22 @@
                 <h3>Derdim Olsun</h3>
                 <p>Reynmen • YouTube'da 366 Milyon+ izlenme ve dijital müzik platformlarında tarihi dinlenme rekoru.</p>
                 <div class="release-actions">
-                    <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="btn-gold">
-                        <i class="fa-brands fa-spotify"></i> Spotify'da Dinle
-                    </a>
                     <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="btn-youtube">
                         <i class="fa-brands fa-youtube"></i> YouTube'da İzle
+                    </a>
+                    <a href="https://apple.com" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                        <i class="fa-brands fa-apple"></i> Apple Music'te Dinle
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="media-grid">
-            <div class="music-box">
-                <h4><i class="fa-brands fa-spotify"></i> Spotify Popüler Liste</h4>
-                <iframe style="border-radius:14px" src="https://spotify.com" width="100%" height="360" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-            <div class="music-box">
-                <h4><i class="fa-brands fa-youtube"></i> Resmi Klip • Derdim Olsun</h4>
-                <iframe style="border-radius:14px" width="100%" height="360" src="https://youtube.com" title="Reynmen - Derdim Olsun" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
-            </div>
+        <div class="video-showcase">
+            <h4><i class="fa-brands fa-youtube"></i> Resmi Video Klip • Derdim Olsun</h4>
+            <iframe style="border-radius:16px" width="100%" height="420" src="https://youtube.com" title="Reynmen - Derdim Olsun" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
     </section>
+
     <section id="klipler">
         <h2 class="section-title">Diğer Popüler YouTube Şarkıları</h2>
         <div class="section-line"></div>
@@ -624,7 +609,7 @@
                     </div>
                     <div class="song-meta">
                         <span>Official Music Video</span>
-                        <strong>188M+ Dinlenme</strong>
+                        <strong>188M+ İzlenme</strong>
                     </div>
                 </div>
                 <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="song-card-btn">
@@ -643,7 +628,7 @@
                         <strong>137M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/@iamreynmen/videos" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="song-card-btn">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -654,7 +639,7 @@
         <h2 class="section-title">Resmi Sosyal Medya</h2>
         <div class="section-line"></div>
         <div class="social-grid">
-            <a href="https://www.instagram.com/reynmen/" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-instagram platform-icon"></i>
                     <div class="social-info">
@@ -664,17 +649,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="social-card">
-                <div class="social-card-left">
-                    <i class="fa-brands fa-spotify platform-icon"></i>
-                    <div class="social-info">
-                        <h4>Spotify</h4>
-                        <span>Reynmen • Resmi Sanatçı</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-            </a>
-            <a href="https://www.youtube.com/@iamreynmen" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-youtube platform-icon"></i>
                     <div class="social-info">
@@ -694,7 +669,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://music.apple.com/tr/artist/reynmen/1280541395?l=tr" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://apple.com" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-apple platform-icon"></i>
                     <div class="social-info">
