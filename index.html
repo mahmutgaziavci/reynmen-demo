@@ -626,7 +626,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://youtube.com" data-app-url="vnd.youtube://://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card mobile-app-link">
+            <a href="https://youtube.com" data-app-url="vnd.youtube://channel/UCRBLdLVbiPnKYZ94qE4z3gg" target="_blank" rel="noopener noreferrer" class="social-card mobile-app-link">
                 <div class="social-card-left">
                     <i class="fa-brands fa-youtube platform-icon"></i>
                     <div class="social-info">
@@ -636,7 +636,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://tiktok.com" data-app-url="snssdk1233://user/profile/@reynmen" target="_blank" rel="noopener noreferrer" class="social-card mobile-app-link">
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-tiktok platform-icon"></i>
                     <div class="social-info">
@@ -683,7 +683,7 @@
             });
         });
 
-        // Mobilde YouTube, Instagram ve TikTok uygulamalarini dogrudan acma
+        // Mobilde YouTube (video + kanal) ve Instagram uygulamalarini dogrudan acma
         document.querySelectorAll('.mobile-app-link').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 const appUrl = this.getAttribute('data-app-url');
