@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REYNMEN | Müzik, Klipler & Resmi Bağlantılar</title>
+    <title>REYNMEN | Resmi Sanatçı Web Sitesi</title>
     <link rel="preconnect" href="https://googleapis.com">
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         :root {
-            --bg-dark: #070709;
-            --bg-card: #111115;
-            --accent: #e5e5ea;
-            --gold: #c5a059;
+            --bg-dark: #060608;
+            --bg-card: #101014;
+            --bg-card-hover: #17171d;
+            --accent: #ffffff;
+            --gold: #c9a86a;
             --text-main: #f5f5f7;
             --text-muted: #8e8e93;
+            --border-subtle: rgba(255, 255, 255, 0.08);
         }
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body {
@@ -23,94 +25,121 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.7;
+            overflow-x: hidden;
         }
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(7, 7, 9, 0.88);
-            backdrop-filter: blur(14px);
+            background: rgba(6, 6, 8, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 18px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.07);
+            border-bottom: 1px solid var(--border-subtle);
         }
         .logo {
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             letter-spacing: 6px;
             color: #fff;
             text-decoration: none;
         }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-left: 28px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
             transition: 0.3s;
         }
         .nav-links a:hover { color: #fff; }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
         .hero {
-            min-height: 95vh;
+            min-height: 96vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 8% 60px;
-            background: radial-gradient(circle at 75% 35%, #232329 0%, #070709 65%);
+            padding: 125px 8% 70px;
+            background: radial-gradient(circle at 75% 30%, #222228 0%, #060608 65%);
             gap: 60px;
             flex-wrap: wrap;
         }
         .hero-text { flex: 1; min-width: 300px; max-width: 580px; }
         .badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 6px 16px;
-            border: 1px solid rgba(255,255,255,0.25);
-            color: var(--accent);
+            border: 1px solid rgba(201, 168, 106, 0.45);
+            color: var(--gold);
             font-size: 0.72rem;
+            font-weight: 600;
             letter-spacing: 2.5px;
             border-radius: 50px;
             margin-bottom: 22px;
             text-transform: uppercase;
         }
         .hero-text h1 {
-            font-size: 4.4rem;
+            font-size: 4.5rem;
             font-weight: 800;
-            letter-spacing: 7px;
+            letter-spacing: 8px;
             margin: 0 0 18px;
             line-height: 1.05;
         }
         .hero-text p {
             color: var(--text-muted);
             font-size: 1.05rem;
-            margin-bottom: 34px;
+            margin-bottom: 36px;
         }
         .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
         .btn-primary {
             background: #ffffff;
             color: #000000;
-            padding: 14px 34px;
+            padding: 15px 34px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             transition: 0.3s;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255, 255, 255, 0.22); }
         .btn-outline {
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255,255,255,0.28);
             color: #fff;
-            padding: 14px 34px;
+            padding: 15px 34px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             transition: 0.3s;
         }
-        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.07); }
         .hero-image {
             flex: 1;
             min-width: 280px;
@@ -119,17 +148,17 @@
         }
         .hero-image img {
             width: 100%;
-            height: 520px;
+            height: 530px;
             object-fit: cover;
             object-position: top center;
-            border-radius: 24px;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 26px;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.95);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             background: #141418;
         }
-        section { padding: 85px 8%; max-width: 1200px; margin: 0 auto; }
+        section { padding: 90px 8%; max-width: 1200px; margin: 0 auto; }
         .section-title {
-            font-size: 1.9rem;
+            font-size: 1.95rem;
             font-weight: 800;
             letter-spacing: 3px;
             margin-bottom: 10px;
@@ -138,8 +167,8 @@
         .section-line {
             width: 55px;
             height: 3px;
-            background: #ffffff;
-            margin-bottom: 40px;
+            background: var(--gold);
+            margin-bottom: 42px;
         }
         .about-grid {
             display: grid;
@@ -148,27 +177,54 @@
             background: var(--bg-card);
             padding: 45px;
             border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid var(--border-subtle);
         }
         .about-stats {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 22px;
-            border-left: 1px solid rgba(255,255,255,0.08);
+            gap: 24px;
+            border-left: 1px solid var(--border-subtle);
             padding-left: 35px;
         }
-        .stat-item h3 { margin: 0; font-size: 1.8rem; color: #fff; }
+        .stat-item h3 { margin: 0; font-size: 1.85rem; color: #fff; }
         .stat-item span { font-size: 0.85rem; color: var(--text-muted); }
+        .latest-release-card {
+            background: linear-gradient(135deg, #17171e 0%, #0e0e12 100%);
+            border: 1px solid rgba(201, 168, 106, 0.35);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        .release-tag {
+            background: var(--gold);
+            color: #000;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 50px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .release-info h3 { margin: 0 0 6px; font-size: 1.75rem; letter-spacing: 1px; }
+        .release-info p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
+        .release-actions { display: flex; gap: 12px; flex-wrap: wrap; }
         .music-box {
             background: var(--bg-card);
-            padding: 25px;
+            padding: 24px;
             border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid var(--border-subtle);
         }
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 18px;
         }
         .social-card {
@@ -177,24 +233,26 @@
             border-radius: 18px;
             text-decoration: none;
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: space-between;
             transition: 0.3s;
         }
+        .social-card-left { display: flex; align-items: center; gap: 16px; }
         .social-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255,255,255,0.4);
-            background: #18181e;
+            border-color: var(--gold);
+            background: var(--bg-card-hover);
         }
-        .social-card i { font-size: 1.7rem; color: #fff; }
+        .social-card i.platform-icon { font-size: 1.75rem; color: #fff; }
         .social-info h4 { margin: 0; font-size: 0.98rem; }
         .social-info span { font-size: 0.8rem; color: var(--text-muted); }
+        .arrow-icon { color: var(--text-muted); font-size: 0.85rem; }
         footer {
             background: #040405;
-            border-top: 1px solid rgba(255,255,255,0.07);
-            padding: 50px 8% 30px;
+            border-top: 1px solid var(--border-subtle);
+            padding: 55px 8% 35px;
             margin-top: 60px;
         }
         .footer-top {
@@ -202,11 +260,24 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 35px;
+            border-bottom: 1px solid var(--border-subtle);
         }
-        .footer-brand h3 { margin: 0 0 8px; letter-spacing: 5px; }
-        .footer-brand p { margin: 0; color: var(--text-muted); font-size: 0.85rem; }
+        .footer-brand h3 { margin: 0 0 8px; letter-spacing: 5px; font-size: 1.3rem; }
+        .footer-brand p { margin: 0; color: var(--text-muted); font-size: 0.85rem; max-width: 420px; }
+        .copy-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 10px;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+        .copy-btn:hover { background: #fff; color: #000; }
         .footer-bottom {
             padding-top: 25px;
             display: flex;
@@ -217,47 +288,63 @@
             color: var(--text-muted);
         }
         @media (max-width: 768px) {
-            .hero-text h1 { font-size: 2.9rem; }
+            .hero-text h1 { font-size: 3rem; letter-spacing: 5px; }
             .about-grid { grid-template-columns: 1fr; padding: 28px; }
-            .about-stats { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 25px; }
-            .nav-links { display: none; }
+            .about-stats { border-left: none; border-top: 1px solid var(--border-subtle); padding-left: 0; padding-top: 25px; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: #0a0a0e;
+                padding: 25px 8%;
+                border-bottom: 1px solid var(--border-subtle);
+                gap: 18px;
+                align-items: flex-start;
+            }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo">REYNMEN</a>
-        <div class="nav-links">
+        <a href="#ust" class="logo">REYNMEN</a>
+        <button class="menu-toggle" id="menuBtn" aria-label="Menüyü Aç">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
             <a href="#hakkinda">Hakkında</a>
-            <a href="#muzik">Diskografi</a>
-            <a href="#sosyal">Sosyal Medya</a>
-            <a href="#iletisim">İletişim</a>
+            <a href="#muzik">Son Eser & Diskografi</a>
+            <a href="#sosyal">Resmi Hesaplar</a>
+            <a href="#iletisim">Menajerlik</a>
         </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero" id="ust">
         <div class="hero-text">
-            <span class="badge">Müzisyen • Söz Yazarı • Prodüktör</span>
+            <span class="badge"><i class="fa-solid fa-circle-check"></i> Resmi Sanatçı Sayfası</span>
             <h1>REYNMEN</h1>
-            <p>Modern Türk pop ve R&B müziğine yön veren hit şarkıları, milyonlara ulaşan sahne performansları ve özgün tarzıyla Yusuf Aktaş'ın dijital dünyasına hoş geldiniz.</p>
+            <p>Modern Türk pop ve R&B sahnesine yön veren hit parçaları, milyonlara ulaşan dijital projeleri ve özgün müzikal kimliğiyle Yusuf Aktaş'ın resmi dijital platformu.</p>
             <div class="hero-buttons">
-                <a href="#muzik" class="btn-primary"><i class="fa-solid fa-play"></i> Şarkıları Dinle</a>
-                <a href="#sosyal" class="btn-outline">Resmi Hesaplar</a>
+                <a href="#muzik" class="btn-primary"><i class="fa-solid fa-play"></i> Son Şarkıyı Dinle</a>
+                <a href="#sosyal" class="btn-outline"><i class="fa-solid fa-share-nodes"></i> Sosyal Medya</a>
             </div>
         </div>
         <div class="hero-image">
             <img src="reynmen.jpeg" alt="Reynmen - Yusuf Aktaş">
         </div>
     </header>
-
     <section id="hakkinda">
         <h2 class="section-title">Reynmen Hakkında</h2>
         <div class="section-line"></div>
         <div class="about-grid">
             <div>
-                <p><strong>Yusuf Aktaş</strong> ya da sahne adıyla <strong>Reynmen</strong> (d. 6 Aralık 1995, İstanbul), Türk şarkıcı, söz yazarı ve dijital içerik üreticisidir. Dijital platformlarda ürettiği yaratıcı içeriklerle geniş bir kitleye ulaştıktan sonra kariyerini profesyonel müzik dünyasına taşımıştır.</p>
-                <p>2019 yılında yayımladığı <em>"Derdim Olsun"</em> ve <em>"Ela"</em> teklileriyle Türkiye ve dünya müzik listelerinde rekorlar kırarak ana akım müzik sahnesinde kalıcı bir yer edinmiştir. Ardından <em>RnBesk</em> EP'si, <em>"Yana Yana"</em>, <em>"Renklensin"</em>, <em>"Çatma Yarim"</em> ve <em>"Sen Var Ya"</em> gibi çalışmalarıyla kendine özgü vokal tarzını ve modern altyapılarını dinleyicileriyle buluşturmaya devam etmektedir.</p>
+                <p><strong>Yusuf Aktaş</strong> ya da sahne adıyla <strong>Reynmen</strong> (d. 6 Aralık 1995, İstanbul), Türk şarkıcı, söz yazarı ve prodüktördür. Dijital dünyada yakaladığı büyük ivmeyi profesyonel müzik kariyerine taşıyarak kısa sürede Türkiye'nin en çok dinlenen sanatçıları arasına girmiştir.</p>
+                <p>2019 yılında yayımladığı <em>"Derdim Olsun"</em> ve <em>"Ela"</em> teklileriyle global listelerde tarihi izlenme ve dinlenme rekorları kırmıştır. Ardından <em>RnBesk</em> EP'si, <em>"Leila"</em>, <em>"Yana Yana"</em>, <em>"Çatma Yarim"</em>, <em>"Sen Var Ya"</em> ve son olarak <strong>"RENKLENSİN (Tallava Versiyon)"</strong> çalışmalarıyla modern sound'unu dinleyicileriyle buluşturmaya devam etmektedir.</p>
             </div>
             <div class="about-stats">
                 <div class="stat-item">
@@ -265,12 +352,12 @@
                     <span>Aylık Spotify Dinleyicisi</span>
                 </div>
                 <div class="stat-item">
-                    <h3>1 Milyar+</h3>
-                    <span>Toplam Dijital Dinlenme</span>
+                    <h3>6.3M+</h3>
+                    <span>Resmi YouTube Abonesi</span>
                 </div>
                 <div class="stat-item">
                     <h3>Houze</h3>
-                    <span>Müzik & Prodüksiyon</span>
+                    <span>İstanbul • Müzik & Yapım</span>
                 </div>
             </div>
         </div>
@@ -279,6 +366,23 @@
     <section id="muzik">
         <h2 class="section-title">Öne Çıkan Eserler</h2>
         <div class="section-line"></div>
+
+        <div class="latest-release-card">
+            <div class="release-info">
+                <span class="release-tag">En Son Çıkan Single • 2026</span>
+                <h3>RENKLENSİN (Tallava Versiyon)</h3>
+                <p>Reynmen • Tüm dijital müzik platformlarında yayında.</p>
+            </div>
+            <div class="release-actions">
+                <a href="https://open.spotify.com/intl-tr/artist/1Fg19vpUJpAAPFjnKaVYVW" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <i class="fa-brands fa-spotify"></i> Spotify'da Aç
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                    <i class="fa-brands fa-youtube"></i> YouTube Müzik
+                </a>
+            </div>
+        </div>
+
         <div class="music-box">
             <iframe style="border-radius:14px" src="https://spotify.com" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
@@ -288,40 +392,65 @@
         <h2 class="section-title">Resmi Sosyal Medya</h2>
         <div class="section-line"></div>
         <div class="social-grid">
-            <a href="https://instagram.com" target="_blank" class="social-card">
-                <i class="fa-brands fa-instagram"></i>
-                <div class="social-info">
-                    <h4>Instagram</h4>
-                    <span>@reynmen</span>
+            <a href="https://www.instagram.com/reynmen/" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                    <i class="fa-brands fa-instagram platform-icon"></i>
+                    <div class="social-info">
+                        <h4>Instagram</h4>
+                        <span>@reynmen • 6.2M Takipçi</span>
+                    </div>
                 </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://spotify.com" target="_blank" class="social-card">
-                <i class="fa-brands fa-spotify"></i>
-                <div class="social-info">
-                    <h4>Spotify</h4>
-                    <span>Sanatçı Profili</span>
+            <a href="https://open.spotify.com/intl-tr/artist/1Fg19vpUJpAAPFjnKaVYVW" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                    <i class="fa-brands fa-spotify platform-icon"></i>
+                    <div class="social-info">
+                        <h4>Spotify</h4>
+                        <span>Reynmen • Resmi Sanatçı</span>
+                    </div>
                 </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://youtube.com" target="_blank" class="social-card">
-                <i class="fa-brands fa-youtube"></i>
-                <div class="social-info">
-                    <h4>YouTube</h4>
-                    <span>Resmi Video Kanalı</span>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                    <i class="fa-brands fa-youtube platform-icon"></i>
+                    <div class="social-info">
+                        <h4>YouTube</h4>
+                        <span>@iamreynmen • 6.36M Abone</span>
+                    </div>
                 </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://x.com" target="_blank" class="social-card">
-                <i class="fa-brands fa-x-twitter"></i>
-                <div class="social-info">
-                    <h4>X (Twitter)</h4>
-                    <span>@imreynmen</span>
+            <a href="https://www.tiktok.com/@reynmen" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                    <i class="fa-brands fa-tiktok platform-icon"></i>
+                    <div class="social-info">
+                        <h4>TikTok</h4>
+                        <span>@reynmen • 1.2M Takipçi</span>
+                    </div>
                 </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://tiktok.com" target="_blank" class="social-card">
-                <i class="fa-brands fa-tiktok"></i>
-                <div class="social-info">
-                    <h4>TikTok</h4>
-                    <span>@reynmen</span>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                    <i class="fa-brands fa-x-twitter platform-icon"></i>
+                    <div class="social-info">
+                        <h4>X (Twitter)</h4>
+                        <span>@imreynmen • Resmi Hesap</span>
+                    </div>
                 </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+            </a>
+            <a href="https://apple.com" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                    <i class="fa-brands fa-apple platform-icon"></i>
+                    <div class="social-info">
+                        <h4>Apple Music</h4>
+                        <span>Reynmen • Diskografi</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
         </div>
     </section>
@@ -330,18 +459,43 @@
         <div class="footer-top">
             <div class="footer-brand">
                 <h3>REYNMEN</h3>
-                <p>Müzik, sahne performansları ve dijital projeler için resmi tanıtım arayüzü.</p>
+                <p>Yusuf Aktaş • Müzik yapımları, konser organizasyonları ve marka iş birlikleri için resmi dijital tanıtım platformu.</p>
             </div>
             <div>
-                <p style="margin:0; font-size:0.85rem; color:#fff;"><strong>Menajerlik & Booking İletişim</strong></p>
-                <p style="margin:5px 0 0; font-size:0.85rem; color:var(--text-muted);">info@paradiseproduction.com.tr</p>
+                <p style="margin:0; font-size:0.88rem; color:#fff;"><strong>Menajerlik & Booking İletişim</strong></p>
+                <p style="margin:5px 0 0; font-size:0.85rem; color:var(--text-muted);" id="bookingMail">info@paradiseproduction.com.tr</p>
+                <button class="copy-btn" id="copyMailBtn"><i class="fa-regular fa-copy"></i> E-Posta Adresini Kopyala</button>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 Reynmen. Tüm hakları saklıdır.</span>
-            <span>Tasarım & Geliştirme: Web Portfolyo Projesi</span>
+            <span>© 2026 REYNMEN (Yusuf Aktaş). Tüm hakları saklıdır.</span>
+            <span>Tasarım & Dijital Yönetim: Houze Istanbul • Resmi Sanatçı Arayüzü</span>
         </div>
     </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const copyBtn = document.getElementById('copyMailBtn');
+        copyBtn.addEventListener('click', () => {
+            const mailText = document.getElementById('bookingMail').innerText;
+            navigator.clipboard.writeText(mailText).then(() => {
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Kopyalandı!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> E-Posta Adresini Kopyala';
+                }, 2500);
+            });
+        });
+    </script>
 
 </body>
 </html>
