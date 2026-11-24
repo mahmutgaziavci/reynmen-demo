@@ -534,7 +534,7 @@
                 <h3>Derdim Olsun</h3>
                 <p>Reynmen • YouTube'da 367 Milyon+ izlenme ve dijital müzik platformlarında tarihi dinlenme rekoru.</p>
                 <div class="release-actions">
-                    <a href="https://youtube.com" data-yt-id="Ofy0aAXiVpg" target="_blank" rel="noopener noreferrer" class="btn-youtube yt-mobile-link">
+                    <a href="https://youtube.com" data-app-url="vnd.youtube://watch?v=Ofy0aAXiVpg" target="_blank" rel="noopener noreferrer" class="btn-youtube mobile-app-link">
                         <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                     </a>
                 </div>
@@ -557,7 +557,7 @@
                         <strong>390M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=zBAjrCc_6ws&list=RDzBAjrCc_6ws&start_radio=1" data-yt-id="zBAjrCc_6ws" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
+                <a href="https://youtube.com" data-app-url="vnd.youtube://watch?v=zBAjrCc_6ws" target="_blank" rel="noopener noreferrer" class="song-card-btn mobile-app-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -573,7 +573,7 @@
                         <strong>309M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://youtube.com" data-yt-id="BokbpfhV8O8" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
+                <a href="https://youtube.com" data-app-url="vnd.youtube://watch?v=BokbpfhV8O8" target="_blank" rel="noopener noreferrer" class="song-card-btn mobile-app-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -589,7 +589,7 @@
                         <strong>183M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://youtube.com" data-yt-id="_JJxjxPiPuk" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
+                <a href="https://youtube.com" data-app-url="vnd.youtube://watch?v=_JJxjxPiPuk" target="_blank" rel="noopener noreferrer" class="song-card-btn mobile-app-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -605,7 +605,7 @@
                         <strong>137M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://youtube.com" data-yt-id="Ku9vMdqalOk" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
+                <a href="https://youtube.com" data-app-url="vnd.youtube://watch?v=Ku9vMdqalOk" target="_blank" rel="noopener noreferrer" class="song-card-btn mobile-app-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -616,7 +616,7 @@
         <h2 class="section-title">Resmi Sosyal Medya</h2>
         <div class="section-line"></div>
         <div class="social-grid">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://instagram.com" data-app-url="instagram://user?username=reynmen" target="_blank" rel="noopener noreferrer" class="social-card mobile-app-link">
                 <div class="social-card-left">
                     <i class="fa-brands fa-instagram platform-icon"></i>
                     <div class="social-info">
@@ -626,7 +626,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://youtube.com" data-app-url="vnd.youtube://://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card mobile-app-link">
                 <div class="social-card-left">
                     <i class="fa-brands fa-youtube platform-icon"></i>
                     <div class="social-info">
@@ -636,7 +636,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://tiktok.com" data-app-url="snssdk1233://user/profile/@reynmen" target="_blank" rel="noopener noreferrer" class="social-card mobile-app-link">
                 <div class="social-card-left">
                     <i class="fa-brands fa-tiktok platform-icon"></i>
                     <div class="social-info">
@@ -683,19 +683,21 @@
             });
         });
 
-        // Mobilde YouTube uygulamasini dogrudan acma yonlendirmesi
-        document.querySelectorAll('.yt-mobile-link').forEach(btn => {
+        // Mobilde YouTube, Instagram ve TikTok uygulamalarini dogrudan acma
+        document.querySelectorAll('.mobile-app-link').forEach(btn => {
             btn.addEventListener('click', function(e) {
-                const videoId = this.getAttribute('data-yt-id');
+                const appUrl = this.getAttribute('data-app-url');
                 const webUrl = this.href;
                 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-                if (isMobile && videoId) {
+                if (isMobile && appUrl) {
                     e.preventDefault();
-                    const appUrl = 'vnd.youtube://watch?v=' + videoId;
+                    const start = Date.now();
                     window.location.href = appUrl;
                     setTimeout(() => {
-                        window.location.href = webUrl;
+                        if (Date.now() - start < 1500) {
+                            window.location.href = webUrl;
+                        }
                     }, 900);
                 }
             });
