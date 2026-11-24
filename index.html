@@ -534,7 +534,7 @@
                 <h3>Derdim Olsun</h3>
                 <p>Reynmen • YouTube'da 367 Milyon+ izlenme ve dijital müzik platformlarında tarihi dinlenme rekoru.</p>
                 <div class="release-actions">
-                    <a href="https://www.youtube.com/watch?v=Ofy0aAXiVpg" target="_blank" rel="noopener noreferrer" class="btn-youtube">
+                    <a href="https://youtube.com" data-yt-id="Ofy0aAXiVpg" target="_blank" rel="noopener noreferrer" class="btn-youtube yt-mobile-link">
                         <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                     </a>
                 </div>
@@ -557,7 +557,7 @@
                         <strong>390M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=Pik2jnekMcA" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                <a href="https://www.youtube.com/watch?v=zBAjrCc_6ws&list=RDzBAjrCc_6ws&start_radio=1" data-yt-id="zBAjrCc_6ws" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -573,7 +573,7 @@
                         <strong>309M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=BokbpfhV8O8" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                <a href="https://youtube.com" data-yt-id="BokbpfhV8O8" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -589,7 +589,7 @@
                         <strong>183M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=_JJxjxPiPuk" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                <a href="https://youtube.com" data-yt-id="_JJxjxPiPuk" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -601,11 +601,11 @@
                         <h4>ÇATMA YARİM</h4>
                     </div>
                     <div class="song-meta">
-                        <span>Official Backstage Video</span>
+                        <span>Official Video</span>
                         <strong>137M+ İzlenme</strong>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=Ku9vMdqalOk" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                <a href="https://youtube.com" data-yt-id="Ku9vMdqalOk" target="_blank" rel="noopener noreferrer" class="song-card-btn yt-mobile-link">
                     <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                 </a>
             </div>
@@ -626,7 +626,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://www.youtube.com/@iamreynmen" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-youtube platform-icon"></i>
                     <div class="social-info">
@@ -680,6 +680,24 @@
             link.addEventListener('click', () => {
                 hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+            });
+        });
+
+        // Mobilde YouTube uygulamasini dogrudan acma yonlendirmesi
+        document.querySelectorAll('.yt-mobile-link').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const videoId = this.getAttribute('data-yt-id');
+                const webUrl = this.href;
+                const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+                if (isMobile && videoId) {
+                    e.preventDefault();
+                    const appUrl = 'vnd.youtube://watch?v=' + videoId;
+                    window.location.href = appUrl;
+                    setTimeout(() => {
+                        window.location.href = webUrl;
+                    }, 900);
+                }
             });
         });
 
