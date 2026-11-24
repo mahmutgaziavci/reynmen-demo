@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REYNMEN | Resmi Sanatçı Web Sitesi</title>
     <link rel="preconnect" href="https://googleapis.com">
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         :root {
-            --bg-dark: #060608;
-            --bg-card: #101014;
-            --bg-card-hover: #17171d;
-            --accent: #ffffff;
-            --gold: #c9a86a;
+            --bg-dark: #050507;
+            --bg-card: #0e0e12;
+            --bg-card-elevated: #15151b;
+            --gold-light: #f3dfb9;
+            --gold: #d4af37;
+            --gold-dark: #997a2c;
+            --gold-gradient: linear-gradient(135deg, #f3dfb9 0%, #d4af37 50%, #997a2c 100%);
             --youtube-red: #ff0033;
             --text-main: #f5f5f7;
-            --text-muted: #8e8e93;
+            --text-muted: #92929a;
+            --border-gold: rgba(212, 175, 55, 0.28);
             --border-subtle: rgba(255, 255, 255, 0.08);
         }
         * { box-sizing: border-box; scroll-behavior: smooth; }
@@ -32,21 +35,24 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(6, 6, 8, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 18px 8%;
+            height: 74px;
+            background: rgba(5, 5, 7, 0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 0 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-gold);
         }
         .logo {
             font-weight: 800;
-            font-size: 1.45rem;
+            font-size: 1.4rem;
             letter-spacing: 6px;
-            color: #fff;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
         .nav-links {
@@ -57,235 +63,364 @@
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            letter-spacing: 1.2px;
+            letter-spacing: 1.4px;
             text-transform: uppercase;
             transition: 0.3s;
         }
-        .nav-links a:hover { color: #fff; }
-        .menu-toggle {
+        .nav-links a:hover { color: var(--gold-light); }
+        .hamburger {
             display: none;
-            background: none;
-            border: 1px solid var(--border-subtle);
-            color: #fff;
-            font-size: 1.2rem;
-            padding: 8px 12px;
-            border-radius: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-gold);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
             cursor: pointer;
+            z-index: 1100;
         }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: 0.35s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
         .hero {
             min-height: 96vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 125px 8% 70px;
-            background: radial-gradient(circle at 75% 30%, #222228 0%, #060608 65%);
-            gap: 60px;
+            padding: 120px 7% 70px;
+            background: radial-gradient(circle at 75% 25%, rgba(212, 175, 55, 0.14) 0%, #050507 62%);
+            gap: 55px;
             flex-wrap: wrap;
         }
-        .hero-text { flex: 1; min-width: 300px; max-width: 580px; }
+        .hero-text { flex: 1; min-width: 290px; max-width: 580px; }
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
-            border: 1px solid rgba(201, 168, 106, 0.45);
-            color: var(--gold);
+            padding: 7px 16px;
+            border: 1px solid var(--border-gold);
+            background: rgba(212, 175, 55, 0.08);
+            color: var(--gold-light);
             font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 2.5px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
             border-radius: 50px;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         .hero-text h1 {
-            font-size: 4.5rem;
+            font-size: 4.4rem;
             font-weight: 800;
             letter-spacing: 8px;
-            margin: 0 0 18px;
+            margin: 0 0 16px;
             line-height: 1.05;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .hero-text p {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 36px;
+            font-size: 1.02rem;
+            margin-bottom: 34px;
         }
-        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn-primary {
-            background: #ffffff;
-            color: #000000;
-            padding: 15px 32px;
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #08080a;
+            padding: 15px 30px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.88rem;
-            letter-spacing: 0.5px;
+            font-weight: 800;
+            font-size: 0.86rem;
+            letter-spacing: 0.6px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255, 255, 255, 0.22); }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(212, 175, 55, 0.4); }
         .btn-youtube {
             background: var(--youtube-red);
             color: #ffffff;
-            padding: 15px 32px;
+            padding: 15px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.88rem;
-            letter-spacing: 0.5px;
+            font-size: 0.86rem;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             transition: 0.3s;
         }
-        .btn-youtube:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255, 0, 51, 0.35); }
+        .btn-youtube:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255, 0, 51, 0.35); }
         .btn-outline {
-            border: 1px solid rgba(255,255,255,0.28);
-            color: #fff;
-            padding: 15px 32px;
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            padding: 15px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             transition: 0.3s;
         }
-        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.07); }
+        .btn-outline:hover { background: rgba(212, 175, 55, 0.12); border-color: var(--gold); }
         .hero-image {
             flex: 1;
             min-width: 280px;
-            max-width: 430px;
+            max-width: 420px;
             position: relative;
         }
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 30px;
+            background: var(--gold-gradient);
+            opacity: 0.35;
+            filter: blur(16px);
+            z-index: 0;
+        }
         .hero-image img {
+            position: relative;
+            z-index: 1;
             width: 100%;
-            height: 530px;
+            height: 510px;
             object-fit: cover;
             object-position: top center;
             border-radius: 26px;
-            box-shadow: 0 35px 80px rgba(0,0,0,0.95);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            border: 1.5px solid var(--border-gold);
             background: #141418;
         }
-        section { padding: 90px 8%; max-width: 1200px; margin: 0 auto; }
+        section { padding: 85px 7%; max-width: 1200px; margin: 0 auto; }
         .section-title {
-            font-size: 1.95rem;
+            font-size: 1.85rem;
             font-weight: 800;
             letter-spacing: 3px;
             margin-bottom: 10px;
             text-transform: uppercase;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .section-line {
-            width: 55px;
+            width: 60px;
             height: 3px;
-            background: var(--gold);
-            margin-bottom: 42px;
+            background: var(--gold-gradient);
+            margin-bottom: 40px;
+            border-radius: 2px;
         }
         .about-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 40px;
+            gap: 36px;
             background: var(--bg-card);
-            padding: 45px;
+            padding: 40px;
             border-radius: 24px;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-gold);
         }
         .about-stats {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 24px;
-            border-left: 1px solid var(--border-subtle);
-            padding-left: 35px;
+            gap: 22px;
+            border-left: 1px solid var(--border-gold);
+            padding-left: 32px;
         }
-        .stat-item h3 { margin: 0; font-size: 1.85rem; color: #fff; }
+        .stat-item h3 { margin: 0; font-size: 1.8rem; color: var(--gold-light); }
         .stat-item span { font-size: 0.85rem; color: var(--text-muted); }
-        .latest-release-card {
-            background: linear-gradient(135deg, #181820 0%, #0e0e13 100%);
-            border: 1px solid rgba(201, 168, 106, 0.45);
+
+        /* Tipografik Lüks Altın Kapak Kutusu */
+        .typo-cover {
+            width: 185px;
+            height: 185px;
+            border-radius: 20px;
+            flex-shrink: 0;
+            background: radial-gradient(circle at top left, #241e12 0%, #0a0a0d 75%);
+            border: 1.5px solid var(--border-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 16px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.85);
+            position: relative;
+        }
+        .typo-cover .artist-tag {
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .typo-cover .song-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: 2px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .typo-cover .year-tag {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-top: 10px;
+            border-top: 1px solid var(--border-gold);
+            padding-top: 6px;
+            width: 70%;
+        }
+
+        .featured-hit {
+            background: linear-gradient(135deg, #161410 0%, #0c0c10 100%);
+            border: 1px solid var(--border-gold);
             border-radius: 26px;
             padding: 32px;
-            margin-bottom: 30px;
+            margin-bottom: 34px;
             display: flex;
             align-items: center;
             gap: 32px;
             flex-wrap: wrap;
         }
-        .release-cover {
-            width: 175px;
-            height: 175px;
-            border-radius: 18px;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 1px solid rgba(201, 168, 106, 0.45);
-            background: radial-gradient(circle, #2a251d 0%, #111116 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        }
-        .release-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            position: relative;
-            z-index: 2;
-        }
-        .release-cover-fallback {
-            color: var(--gold);
-            font-size: 2.8rem;
-            position: absolute;
-            z-index: 1;
-        }
-        .release-content { flex: 1; min-width: 260px; }
+        .release-content { flex: 1; min-width: 250px; }
         .release-tag {
-            background: var(--gold);
+            background: var(--gold-gradient);
             color: #000;
             font-size: 0.72rem;
             font-weight: 800;
             padding: 5px 14px;
             border-radius: 50px;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.4px;
             text-transform: uppercase;
             display: inline-block;
             margin-bottom: 12px;
         }
-        .release-content h3 { margin: 0 0 8px; font-size: 1.85rem; letter-spacing: 1px; }
+        .release-content h3 { margin: 0 0 8px; font-size: 1.85rem; color: #fff; }
         .release-content p { margin: 0 0 22px; color: var(--text-muted); font-size: 0.92rem; }
-        .release-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+        .release-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .songs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            margin-bottom: 34px;
+        }
+        .song-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 22px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.3s;
+        }
+        .song-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            background: var(--bg-card-elevated);
+        }
+        .song-art-banner {
+            height: 135px;
+            border-radius: 16px;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.22) 0%, #09090c 80%);
+            border: 1px solid var(--border-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 18px;
+        }
+        .song-art-banner span {
+            font-size: 0.62rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .song-art-banner h4 {
+            font-family: 'Cinzel', serif;
+            margin: 0;
+            font-size: 1.4rem;
+            letter-spacing: 2.5px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .song-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .song-meta strong { color: var(--gold-light); }
+        .song-card-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 14px;
+            background: rgba(255, 0, 51, 0.14);
+            border: 1px solid rgba(255, 0, 51, 0.45);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.84rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .song-card-btn:hover { background: var(--youtube-red); border-color: var(--youtube-red); }
+
         .media-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 22px;
         }
         .music-box {
             background: var(--bg-card);
             padding: 20px;
             border-radius: 24px;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-gold);
         }
         .music-box h4 {
             margin: 0 0 14px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--gold-light);
         }
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
+            gap: 16px;
         }
         .social-card {
             background: var(--bg-card);
-            padding: 24px;
+            padding: 22px;
             border-radius: 18px;
             text-decoration: none;
             color: #fff;
@@ -295,51 +430,59 @@
             justify-content: space-between;
             transition: 0.3s;
         }
-        .social-card-left { display: flex; align-items: center; gap: 16px; }
+        .social-card-left { display: flex; align-items: center; gap: 15px; }
         .social-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--gold);
-            background: var(--bg-card-hover);
+            background: var(--bg-card-elevated);
         }
-        .social-card i.platform-icon { font-size: 1.75rem; color: #fff; }
-        .social-info h4 { margin: 0; font-size: 0.98rem; }
-        .social-info span { font-size: 0.8rem; color: var(--text-muted); }
-        .arrow-icon { color: var(--text-muted); font-size: 0.85rem; }
+        .social-card i.platform-icon { font-size: 1.7rem; color: var(--gold); }
+        .social-info h4 { margin: 0; font-size: 0.96rem; }
+        .social-info span { font-size: 0.78rem; color: var(--text-muted); }
+        .arrow-icon { color: var(--gold); font-size: 0.82rem; }
         footer {
-            background: #040405;
-            border-top: 1px solid var(--border-subtle);
-            padding: 55px 8% 35px;
-            margin-top: 60px;
+            background: #030304;
+            border-top: 1px solid var(--border-gold);
+            padding: 50px 7% 32px;
+            margin-top: 50px;
         }
         .footer-top {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 30px;
-            padding-bottom: 35px;
+            gap: 28px;
+            padding-bottom: 30px;
             border-bottom: 1px solid var(--border-subtle);
         }
-        .footer-brand h3 { margin: 0 0 8px; letter-spacing: 5px; font-size: 1.3rem; }
+        .footer-brand h3 {
+            margin: 0 0 8px;
+            letter-spacing: 5px;
+            font-size: 1.3rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .footer-brand p { margin: 0; color: var(--text-muted); font-size: 0.85rem; max-width: 420px; }
         .copy-btn {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid var(--border-subtle);
-            color: #fff;
-            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            padding: 9px 18px;
             border-radius: 50px;
             font-size: 0.8rem;
+            font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
             font-family: inherit;
             transition: 0.3s;
         }
-        .copy-btn:hover { background: #fff; color: #000; }
+        .copy-btn:hover { background: var(--gold); color: #000; }
         .footer-bottom {
-            padding-top: 25px;
+            padding-top: 22px;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 14px;
             font-size: 0.8rem;
             color: var(--text-muted);
         }
@@ -347,25 +490,30 @@
             .media-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
+            .hero { padding-top: 105px; text-align: center; }
             .hero-text h1 { font-size: 3rem; letter-spacing: 5px; }
-            .about-grid { grid-template-columns: 1fr; padding: 28px; }
-            .about-stats { border-left: none; border-top: 1px solid var(--border-subtle); padding-left: 0; padding-top: 25px; }
-            .release-cover { width: 100%; height: 240px; }
-            .menu-toggle { display: block; }
+            .hero-buttons { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; padding: 26px; }
+            .about-stats { border-left: none; border-top: 1px solid var(--border-gold); padding-left: 0; padding-top: 22px; }
+            .typo-cover { width: 100%; height: 150px; }
+            .hamburger { display: flex; }
             .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 72px;
-                left: 0;
+                position: fixed;
+                top: 74px;
+                right: -100%;
                 width: 100%;
-                background: #0a0a0e;
-                padding: 25px 8%;
-                border-bottom: 1px solid var(--border-subtle);
-                gap: 18px;
-                align-items: flex-start;
+                height: calc(100vh - 74px);
+                background: rgba(5, 5, 7, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-top: 1px solid var(--border-gold);
             }
-            .nav-links.active { display: flex; }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.15rem; letter-spacing: 3px; color: #fff; }
         }
     </style>
 </head>
@@ -373,12 +521,15 @@
 
     <nav>
         <a href="#ust" class="logo">REYNMEN</a>
-        <button class="menu-toggle" id="menuBtn" aria-label="Menüyü Aç">
-            <i class="fa-solid fa-bars"></i>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menüyü Aç/Kapat">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
         <div class="nav-links" id="navLinks">
             <a href="#hakkinda">Hakkında</a>
             <a href="#muzik">En Çok Dinlenenler</a>
+            <a href="#klipler">Popüler Klipler</a>
             <a href="#sosyal">Resmi Hesaplar</a>
             <a href="#iletisim">Menajerlik</a>
         </div>
@@ -386,12 +537,12 @@
 
     <header class="hero" id="ust">
         <div class="hero-text">
-            <span class="badge"><i class="fa-solid fa-circle-check"></i> Resmi Sanatçı Sayfası</span>
+            <span class="badge"><i class="fa-solid fa-crown"></i> Resmi Sanatçı Platformu</span>
             <h1>REYNMEN</h1>
-            <p>Modern Türk pop ve R&B sahnesine yön veren hit parçaları, milyonlara ulaşan dijital projeleri ve özgün müzikal kimliğiyle Yusuf Aktaş'ın resmi dijital platformu.</p>
+            <p>Modern Türk pop ve R&B müziğine yön veren rekor kıran hitleri, milyonlara ulaşan sahne enerjisi ve özgün tarzıyla Yusuf Aktaş'ın dijital dünyası.</p>
             <div class="hero-buttons">
-                <a href="#muzik" class="btn-primary"><i class="fa-solid fa-play"></i> Hit Parçaları Dinle</a>
-                <a href="#sosyal" class="btn-outline"><i class="fa-solid fa-share-nodes"></i> Sosyal Medya</a>
+                <a href="#muzik" class="btn-gold"><i class="fa-solid fa-play"></i> Hit Parçaları Dinle</a>
+                <a href="#sosyal" class="btn-outline"><i class="fa-solid fa-share-nodes"></i> Resmi Hesaplar</a>
             </div>
         </div>
         <div class="hero-image">
@@ -404,16 +555,16 @@
         <div class="about-grid">
             <div>
                 <p><strong>Yusuf Aktaş</strong> ya da sahne adıyla <strong>Reynmen</strong> (d. 6 Aralık 1995, İstanbul), Türk şarkıcı, söz yazarı ve prodüktördür. Dijital dünyada yakaladığı büyük ivmeyi profesyonel müzik kariyerine taşıyarak kısa sürede Türkiye'nin en çok dinlenen sanatçıları arasına girmiştir.</p>
-                <p>2019 yılında yayımladığı ve 366 milyonu aşan izlenmeyle tüm zamanların en çok dinlenen çalışması olan <strong>"Derdim Olsun"</strong> ile global listelerde rekorlar kırmıştır. Ardından <em>"Ela"</em>, <em>"Yana Yana"</em>, <em>RnBesk</em> EP'si, <em>"Renklensin"</em> ve <em>"Çatma Yarim"</em> gibi hit şarkılarıyla müzik listelerinin zirvesinde yer almaya devam etmektedir.</p>
+                <p>2019 yılında yayımladığı ve 367 milyonu aşan izlenmeyle tüm zamanların en çok dinlenen çalışması olan <strong>"Derdim Olsun"</strong> ile global listelerde rekorlar kırmıştır. Ardından <em>"Ela"</em>, <em>"Leila"</em>, <em>"Yana Yana"</em>, <em>RnBesk</em> EP'si ve <em>"Çatma Yarim"</em> gibi milyonlarca kez dinlenen eserleriyle müzik listelerinin zirvesinde yer almaktadır.</p>
             </div>
             <div class="about-stats">
                 <div class="stat-item">
-                    <h3>366M+</h3>
+                    <h3>367M+</h3>
                     <span>Derdim Olsun YouTube İzlenmesi</span>
                 </div>
                 <div class="stat-item">
                     <h3>1.4 Milyar+</h3>
-                    <span>Toplam Spotify Dinlenmesi</span>
+                    <span>Toplam Dijital Dinlenme</span>
                 </div>
                 <div class="stat-item">
                     <h3>Houze</h3>
@@ -424,23 +575,24 @@
     </section>
 
     <section id="muzik">
-        <h2 class="section-title">Öne Çıkan Eserler</h2>
+        <h2 class="section-title">Öne Çıkan Eser</h2>
         <div class="section-line"></div>
 
-        <div class="latest-release-card">
-            <div class="release-cover">
-                <i class="fa-solid fa-compact-disc release-cover-fallback"></i>
-                <img src="derdim-olsun.jpeg" alt="Reynmen - Derdim Olsun Kapak Görseli" onerror="this.style.display='none'">
+        <div class="featured-hit">
+            <div class="typo-cover">
+                <span class="artist-tag">REYNMEN</span>
+                <div class="song-logo">DERDİM<br>OLSUN</div>
+                <span class="year-tag">2019 • SINGLE</span>
             </div>
             <div class="release-content">
-                <span class="release-tag"><i class="fa-solid fa-fire"></i> Tüm Zamanların En Çok Dinlenen Hiti</span>
+                <span class="release-tag"><i class="fa-solid fa-fire"></i> En Çok Dinlenen Rekor Hit</span>
                 <h3>Derdim Olsun</h3>
-                <p>Reynmen • YouTube'da 366 Milyon+ izlenme ve dijital platformlarda rekor dinlenme.</p>
+                <p>Reynmen • YouTube'da 367 Milyon+ izlenme ve dijital müzik platformlarında tarihi dinlenme rekoru.</p>
                 <div class="release-actions">
-                    <a href="https://open.spotify.com/intl-tr/track/5cW8MYnf2grO3q6n6U1ByF" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="btn-gold">
                         <i class="fa-brands fa-spotify"></i> Spotify'da Dinle
                     </a>
-                    <a href="https://www.youtube.com/watch?v=Ofy0aAXiVpg" target="_blank" rel="noopener noreferrer" class="btn-youtube">
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="btn-youtube">
                         <i class="fa-brands fa-youtube"></i> YouTube'da İzle
                     </a>
                 </div>
@@ -449,21 +601,90 @@
 
         <div class="media-grid">
             <div class="music-box">
-                <h4><i class="fa-brands fa-spotify"></i> Spotify En Popüler Şarkılar</h4>
+                <h4><i class="fa-brands fa-spotify"></i> Spotify Popüler Liste</h4>
                 <iframe style="border-radius:14px" src="https://spotify.com" width="100%" height="360" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
             <div class="music-box">
-                <h4><i class="fa-brands fa-youtube"></i> Resmi Video Klip • Derdim Olsun</h4>
-                <iframe style="border-radius:14px" width="100%" height="360" src="https://youtube.com" title="Reynmen - Derdim Olsun (Official Video)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                <h4><i class="fa-brands fa-youtube"></i> Resmi Klip • Derdim Olsun</h4>
+                <iframe style="border-radius:14px" width="100%" height="360" src="https://youtube.com" title="Reynmen - Derdim Olsun" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
+    <section id="klipler">
+        <h2 class="section-title">Diğer Popüler YouTube Şarkıları</h2>
+        <div class="section-line"></div>
+        <div class="songs-grid">
+            <div class="song-card">
+                <div>
+                    <div class="song-art-banner">
+                        <span>REYNMEN</span>
+                        <h4>LEİLA</h4>
+                    </div>
+                    <div class="song-meta">
+                        <span>Official Video</span>
+                        <strong>309M+ İzlenme</strong>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/watch?v=BokbpfhV8O8" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                    <i class="fa-brands fa-youtube"></i> YouTube'da İzle
+                </a>
+            </div>
+
+            <div class="song-card">
+                <div>
+                    <div class="song-art-banner">
+                        <span>REYNMEN</span>
+                        <h4>ELA</h4>
+                    </div>
+                    <div class="song-meta">
+                        <span>Official Video</span>
+                        <strong>260M+ İzlenme</strong>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/watch?v=ePe8WajQoNc" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                    <i class="fa-brands fa-youtube"></i> YouTube'da İzle
+                </a>
+            </div>
+
+            <div class="song-card">
+                <div>
+                    <div class="song-art-banner">
+                        <span>SEMİCENK & REYNMEN</span>
+                        <h4>YANA YANA</h4>
+                    </div>
+                    <div class="song-meta">
+                        <span>Official Video</span>
+                        <strong>183M+ İzlenme</strong>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/watch?v=Q3cj3lVCxr0" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                    <i class="fa-brands fa-youtube"></i> YouTube'da İzle
+                </a>
+            </div>
+
+            <div class="song-card">
+                <div>
+                    <div class="song-art-banner">
+                        <span>REYNMEN</span>
+                        <h4>ÇATMA YARİM</h4>
+                    </div>
+                    <div class="song-meta">
+                        <span>Official Video</span>
+                        <strong>137M+ İzlenme</strong>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/@iamreynmen/videos" target="_blank" rel="noopener noreferrer" class="song-card-btn">
+                    <i class="fa-brands fa-youtube"></i> YouTube'da İzle
+                </a>
+            </div>
+        </div>
+    </section>
     <section id="sosyal">
         <h2 class="section-title">Resmi Sosyal Medya</h2>
         <div class="section-line"></div>
         <div class="social-grid">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://www.instagram.com/reynmen/" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-instagram platform-icon"></i>
                     <div class="social-info">
@@ -483,7 +704,7 @@
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://www.youtube.com/@iamreynmen" target="_blank" rel="noopener noreferrer" class="social-card">
                 <div class="social-card-left">
                     <i class="fa-brands fa-youtube platform-icon"></i>
                     <div class="social-info">
@@ -533,7 +754,7 @@
                 <p>Yusuf Aktaş • Müzik yapımları, konser organizasyonları ve marka iş birlikleri için resmi dijital tanıtım platformu.</p>
             </div>
             <div>
-                <p style="margin:0; font-size:0.88rem; color:#fff;"><strong>Menajerlik & Booking İletişim</strong></p>
+                <p style="margin:0; font-size:0.88rem; color:var(--gold-light);"><strong>Menajerlik & Booking İletişim</strong></p>
                 <p style="margin:5px 0 0; font-size:0.85rem; color:var(--text-muted);" id="bookingMail">info@paradiseproduction.com.tr</p>
                 <button class="copy-btn" id="copyMailBtn"><i class="fa-regular fa-copy"></i> E-Posta Adresini Kopyala</button>
             </div>
@@ -545,13 +766,17 @@
     </footer>
 
     <script>
-        const menuBtn = document.getElementById('menuBtn');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navLinks = document.getElementById('navLinks');
-        menuBtn.addEventListener('click', () => {
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
+
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
@@ -560,7 +785,7 @@
         copyBtn.addEventListener('click', () => {
             const mailText = document.getElementById('bookingMail').innerText;
             navigator.clipboard.writeText(mailText).then(() => {
-                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Kopyalandı!';
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> E-Posta Kopyalandı!';
                 setTimeout(() => {
                     copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> E-Posta Adresini Kopyala';
                 }, 2500);
